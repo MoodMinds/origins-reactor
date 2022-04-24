@@ -36,9 +36,9 @@ public class PublishableAdapter<V, E extends Exception> implements Publishable<V
     @Override
     public void subscribe(Subscriber<? super V, ? super E> subscriber) {
         ReactorSubscriberAdapter<? super V, ? super E> reactorSubscriber = toReactor(subscriber);
-        if (this.publisher instanceof CorePublisher)
-            ((CorePublisher<V>) this.publisher).subscribe(reactorSubscriber);
-        else this.publisher.subscribe(reactorSubscriber);
+        if (publisher instanceof CorePublisher)
+            ((CorePublisher<V>) publisher).subscribe(reactorSubscriber);
+        else publisher.subscribe(reactorSubscriber);
     }
 
     /**

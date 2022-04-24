@@ -34,7 +34,7 @@ public class ReactorContextAdapter implements Context {
     @Override
     @SuppressWarnings("unchecked")
     public <T> T get(Object o) {
-        return (T) this.context.get(o);
+        return (T) context.get(o);
     }
 
     /**
@@ -42,7 +42,7 @@ public class ReactorContextAdapter implements Context {
      */
     @Override
     public boolean hasKey(Object o) {
-        return this.context.containsKey(o);
+        return context.containsKey(o);
     }
 
     /**
@@ -50,7 +50,7 @@ public class ReactorContextAdapter implements Context {
      */
     @Override
     public Context put(Object o, Object o1) {
-        return ReactorContextAdapter.toReactor(this.context.set(o, o1));
+        return ReactorContextAdapter.toReactor(context.set(o, o1));
     }
 
     /**
@@ -58,7 +58,7 @@ public class ReactorContextAdapter implements Context {
      */
     @Override
     public Context delete(Object o) {
-        return ReactorContextAdapter.toReactor(this.context.delete(o));
+        return ReactorContextAdapter.toReactor(context.delete(o));
     }
 
     /**
@@ -66,7 +66,7 @@ public class ReactorContextAdapter implements Context {
      */
     @Override
     public int size() {
-        return this.context.size();
+        return context.size();
     }
 
     /**
@@ -74,7 +74,7 @@ public class ReactorContextAdapter implements Context {
      */
     @Override
     public Stream<Map.Entry<Object, Object>> stream() {
-        return this.context.stream().map(kv -> new SimpleImmutableEntry<>(kv.getKey(), kv.getValue()));
+        return context.stream().map(kv -> new SimpleImmutableEntry<>(kv.getKey(), kv.getValue()));
     }
 
 

@@ -35,7 +35,7 @@ public class ReactorSubscriberAdapter<V, E extends Exception> implements CoreSub
      */
     @Override
     public Context currentContext() {
-        return ReactorContextAdapter.toReactor(this.subscriber.getContext());
+        return ReactorContextAdapter.toReactor(subscriber.getContext());
     }
 
     /**
@@ -43,7 +43,7 @@ public class ReactorSubscriberAdapter<V, E extends Exception> implements CoreSub
      */
     @Override
     public void onSubscribe(Subscription subscription) {
-        this.subscriber.onSubscribe(fromReactive(subscription));
+        subscriber.onSubscribe(fromReactive(subscription));
     }
 
     /**
@@ -51,7 +51,7 @@ public class ReactorSubscriberAdapter<V, E extends Exception> implements CoreSub
      */
     @Override
     public void onNext(V v) {
-        this.subscriber.onNext(v);
+        subscriber.onNext(v);
     }
 
     /**
@@ -59,7 +59,7 @@ public class ReactorSubscriberAdapter<V, E extends Exception> implements CoreSub
      */
     @Override
     public void onError(Throwable throwable) {
-        this.subscriber.onError(throwable);
+        subscriber.onError(throwable);
     }
 
     /**
@@ -67,7 +67,7 @@ public class ReactorSubscriberAdapter<V, E extends Exception> implements CoreSub
      */
     @Override
     public void onComplete() {
-        this.subscriber.onComplete();
+        subscriber.onComplete();
     }
 
 

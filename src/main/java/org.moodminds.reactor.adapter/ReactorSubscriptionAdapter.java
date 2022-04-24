@@ -30,7 +30,7 @@ public class ReactorSubscriptionAdapter implements Subscription {
      */
     @Override
     public void request(long n) {
-        this.subscription.request(n);
+        subscription.request(n);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ReactorSubscriptionAdapter implements Subscription {
      */
     @Override
     public void cancel() {
-        this.subscription.cancel();
+        subscription.cancel();
     }
 
 

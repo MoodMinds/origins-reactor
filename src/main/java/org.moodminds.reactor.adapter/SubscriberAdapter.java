@@ -39,7 +39,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public Context getContext() {
-        return this.subscriber instanceof CoreSubscriber ? new ContextAdapter(((CoreSubscriber<V>) subscriber).currentContext()) : context();
+        return subscriber instanceof CoreSubscriber ? new ContextAdapter(((CoreSubscriber<V>) subscriber).currentContext()) : context();
     }
 
     /**
@@ -47,7 +47,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onError(Throwable throwable) {
-        this.subscriber.onError(throwable);
+        subscriber.onError(throwable);
     }
 
     /**
@@ -55,7 +55,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onException(E exception) {
-        this.subscriber.onError(exception);
+        subscriber.onError(exception);
     }
 
     /**
@@ -63,7 +63,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onThrowable(Throwable throwable) {
-        this.subscriber.onError(throwable);
+        subscriber.onError(throwable);
     }
 
     /**
@@ -71,7 +71,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onSubscribe(Flow.Subscription subscription) {
-        this.subscriber.onSubscribe(toReactive(subscription));
+        subscriber.onSubscribe(toReactive(subscription));
     }
 
     /**
@@ -79,7 +79,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onNext(V item) {
-        this.subscriber.onNext(item);
+        subscriber.onNext(item);
     }
 
     /**
@@ -87,7 +87,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
      */
     @Override
     public void onComplete() {
-        this.subscriber.onComplete();
+        subscriber.onComplete();
     }
 
 
@@ -115,7 +115,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
          */
         @Override
         public Iterator<KeyValue<Object, Object>> iterator() {
-            return this.context.stream().map(KeyValue::keyValue).iterator();
+            return context.stream().map(KeyValue::keyValue).iterator();
         }
 
         /**
@@ -123,7 +123,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
          */
         @Override
         public int size() {
-            return this.context.size();
+            return context.size();
         }
 
         /**
@@ -131,7 +131,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
          */
         @Override
         public Object get(Object id) {
-            return this.context.get(id);
+            return context.get(id);
         }
 
         /**
@@ -139,7 +139,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
          */
         @Override
         public Context set(Object key, Object value) {
-            return new ContextAdapter(this.context.put(key, value));
+            return new ContextAdapter(context.put(key, value));
         }
 
         /**
@@ -147,7 +147,7 @@ public class SubscriberAdapter<V, E extends Exception> implements Subscriber<V, 
          */
         @Override
         public Context delete(Object key) {
-            return new ContextAdapter(this.context.delete(key));
+            return new ContextAdapter(context.delete(key));
         }
 
         /**

@@ -35,7 +35,7 @@ public class ReactorPublisherAdapter<V, E extends Exception> implements CorePubl
      */
     @Override
     public void subscribe(CoreSubscriber<? super V> coreSubscriber) {
-        this.subscribe((Subscriber<? super V>) coreSubscriber);
+        subscribe((Subscriber<? super V>) coreSubscriber);
     }
 
     /**
@@ -43,7 +43,7 @@ public class ReactorPublisherAdapter<V, E extends Exception> implements CorePubl
      */
     @Override
     public void subscribe(Subscriber<? super V> s) {
-        this.publishable.subscribe(fromReactive(s));
+        publishable.subscribe(fromReactive(s));
     }
 
 
