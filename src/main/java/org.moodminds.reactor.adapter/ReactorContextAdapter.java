@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
+import static org.moodminds.util.Cast.cast;
 
 /**
  * The {@link Subscriber.Context} wrapping implementation of the Reactor's {@link Context} interface.
@@ -32,9 +33,8 @@ public class ReactorContextAdapter implements Context {
      * {@inheritDoc}
      */
     @Override
-    @SuppressWarnings("unchecked")
     public <T> T get(Object o) {
-        return (T) context.get(o);
+        return cast(context.get(o));
     }
 
     /**
